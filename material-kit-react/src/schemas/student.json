@@ -1,0 +1,34 @@
+
+
+{
+    "enrolmentNumber": "",
+    "name": "",
+    "branch": "CHE",
+    "batch": "2020",
+    "contactDetails": 
+    {
+        "email": "",
+        "phone": "",
+        "address": ""
+    },
+    "resumeLink":"",
+    "results": 
+    {
+        "sgpaArray": [],
+        "currentCGPA": ""
+    },
+    "currentStatus": "",
+    "numberOfOffers": "",
+    "currentCTC": "",
+    "currentJobRole": "",
+    "currentCompany": "",
+    "jobIDArray": [],
+    "category": "gen",
+    "personalDetails":
+    {
+        "fathersName": "",
+        "mothersName": "",
+        "bloodGroup": "o-"
+    }
+    
+}

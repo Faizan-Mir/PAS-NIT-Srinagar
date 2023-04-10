@@ -14,11 +14,22 @@ import AddStudent from './pages/AddStudent';
 import Companies from './pages/Companies';
 import Jobs from './pages/jobs'; 
 import UserJobs from './pages/userpage/jobs'; 
+import CrcLogin from './pages/crcLoginPage';
 
 // ----------------------------------------------------------------------
 
 export default function Router() {
   const routes = useRoutes([
+
+    {
+      path: '/login',
+      element: <LoginPage />,
+      children: [
+        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: '404', element: <Page404 /> },
+        { path: '*', element: <Navigate to="/404" /> },
+      ]
+    },
     {
       path: '/dashboard',
       element: <DashboardLayout />,
@@ -36,8 +47,8 @@ export default function Router() {
       ],
     },
     {
-      path: 'login',
-      element: <LoginPage />,
+      path: '/crclogin',
+      element: <CrcLogin />
     },
     {
       element: <SimpleLayout />,

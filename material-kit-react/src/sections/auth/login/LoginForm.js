@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 // @mui
 import { Link, Stack, IconButton, InputAdornment, TextField, Checkbox } from '@mui/material';
 import { LoadingButton } from '@mui/lab';
 // components
 import Iconify from '../../../components/iconify';
+
+import data from '../../../schemas/login.json';
 
 // ----------------------------------------------------------------------
 
@@ -13,18 +16,39 @@ export default function LoginForm() {
 
   const [showPassword, setShowPassword] = useState(false);
 
-  const handleClick = () => {
-    navigate('/dashboard', { replace: true });
+  const [formData, setFormData]= useState(data); 
+
+  const handleChange= (event)=>{
+      setFormData({
+          ...formData,
+          [event.target.name]: event.target.value
+      });
   };
+
+  const [message, setMessage] = useState(''); 
+    const handleSubmit= async(event)=>{
+        event.preventDefault(); 
+        try{
+            const response = await axios.post('http://localhost:3001/crclogin/add', formData);
+            
+            navigate('/dashboard', { replace: true });
+
+            setMessage(response.data); 
+            console.log(response.data); 
+        } catch (error) {
+            console.error(error);
+          }
+    }
 
   return (
     <>
       <Stack spacing={3}>
-        <TextField name="email" label="Email address" />
+        <TextField name="email" label="Email address" onChange={handleChange} />
 
         <TextField
           name="password"
           label="Password"
+          onChange={handleChange}
           type={showPassword ? 'text' : 'password'}
           InputProps={{
             endAdornment: (
@@ -45,7 +69,7 @@ export default function LoginForm() {
         </Link>
       </Stack>
 
-      <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={handleClick}>
+      <LoadingButton fullWidth size="large" type="submit" variant="contained" onClick={handleSubmit}>
         Login
       </LoadingButton>
     </>

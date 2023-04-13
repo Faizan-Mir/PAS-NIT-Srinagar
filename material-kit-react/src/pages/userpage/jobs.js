@@ -10,14 +10,6 @@ const bull = (
     </Box>
   );
 
-
-  
-
-
-
-
-
-
 export default function App(){
 
     const [open, setOpen] = useState(false);

@@ -2,9 +2,12 @@ const express= require('express');
 const mongoose = require('../mongoose');
 const router = express.Router(); 
 const Company = require('../schemas/company'); 
+const downloadExcel = require('../excelData/companyExcel')
 
 
 const MyModel = mongoose.model('companies', {});
+
+router.use('/download.xlsx' , downloadExcel)
 
 router.use((req,res,next)=> {
     console.log('Time: ', Date.now())

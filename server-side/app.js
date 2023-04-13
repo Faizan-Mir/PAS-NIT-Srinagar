@@ -8,11 +8,15 @@ app.use(bodyParser.json());
 const studentsRouter = require('./routes/students'); 
 const companiesRouter = require('./routes/companies'); 
 const jobsRouter = require('./routes/jobs')
+const loginRouter = require('./routes/login')
+const crcLoginRouter = require('./routes/crcLogin')
 
 // API that provides a list of all students 
 app.use('/students', studentsRouter); 
 app.use('/companies', companiesRouter); 
 app.use('/jobs', jobsRouter); 
+app.use('/login',loginRouter)
+app.use('/crcLogin', crcLoginRouter)
 
 
 // Server running on Port 3001, as port 3000 is used by our react frontend. 

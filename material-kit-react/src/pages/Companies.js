@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'; 
 import axios from "axios";
+import { Link } from 'react-router-dom';
 import { DataGrid } from '@mui/x-data-grid';
 import { Helmet } from 'react-helmet-async';
 import {Button, Grid, TextField, Typography, MenuItem, Switch} from '@mui/material';
@@ -211,6 +212,10 @@ function CompanyList(){
         checkboxSelection
         disableSelectionOnClick
       />
+      <Link to='http://localhost:3001/companies/download.xlsx'>
+      <Button variant="contained">Download Excel</Button>
+      </Link>
+      
     </div>
         </>
     );

@@ -1,3 +1,5 @@
+
+
 import { Helmet } from 'react-helmet-async';
 // @mui
 import { styled } from '@mui/material/styles';
@@ -38,10 +40,16 @@ const StyledContent = styled('div')(({ theme }) => ({
   padding: theme.spacing(12, 0),
 }));
 
+
 // ----------------------------------------------------------------------
 
 export default function LoginPage() {
   const mdUp = useResponsive('up', 'md');
+
+  
+  const handleClick = () => {
+    window.location.href = 'http://localhost:3000/crclogin';
+  }
 
   return (
     <>
@@ -78,7 +86,7 @@ export default function LoginPage() {
               <Link variant="subtitle2">Get started</Link>
             </Typography>
 
-            <Stack direction="row" spacing={2}>
+            {/* <Stack direction="row" spacing={2}>
               <Button fullWidth size="large" color="inherit" variant="outlined">
                 <Iconify icon="eva:google-fill" color="#DF3E30" width={22} height={22} />
               </Button>
@@ -90,15 +98,18 @@ export default function LoginPage() {
               <Button fullWidth size="large" color="inherit" variant="outlined">
                 <Iconify icon="eva:twitter-fill" color="#1C9CEA" width={22} height={22} />
               </Button>
-            </Stack>
+            </Stack> */}
 
-            <Divider sx={{ my: 3 }}>
+            {/* <Divider sx={{ my: 3 }}>
               <Typography variant="body2" sx={{ color: 'text.secondary' }}>
                 OR
               </Typography>
-            </Divider>
+            </Divider> */}
 
             <LoginForm />
+            <Link to='http://localhost:3000/crclogin' variant="subtitle2" underline="hover" onClick={handleClick}>
+                Click to Access your CRC Dashboard! 
+            </Link>
           </StyledContent>
         </Container>
       </StyledRoot>

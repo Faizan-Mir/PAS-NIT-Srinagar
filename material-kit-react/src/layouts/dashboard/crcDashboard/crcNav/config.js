@@ -1,5 +1,5 @@
 // component
-import SvgColor from '../../../components/svg-color';
+import SvgColor from '../../../../components/svg-color';
 
 // ----------------------------------------------------------------------
 
@@ -20,6 +20,11 @@ const navConfig = [
     title: 'product',
     path: '/dashboard/products',
     icon: icon('ic_cart'),
+  },
+  {
+    title: 'company',
+    path: '/dashboard/companies',
+    icon: icon('ic_user'),
   },
   {
     title: 'blog',

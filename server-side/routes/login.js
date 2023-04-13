@@ -8,21 +8,21 @@ const LocalStrategy = require("passport-local").Strategy;
 const passportLocalMongoose = require("passport-local-mongoose")
 
 const userSchema = new mongoose.Schema({
-    email : {
-        type: String,
-        required: true,
-        unique: true,
-        trim: true
+    username: {
+      type: String,
+      required: true,
+      unique: true,
+      trim: true
     },
-    password : {
-        type: String,
-        trim:true
+    password: {
+      type: String,
+      trim: true
     }
   });
   
-  userSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
+  userSchema.plugin(passportLocalMongoose);
   
-  const User = mongoose.model('users', userSchema);
+  const User = mongoose.model('User', userSchema);
   
   router.use((req,res,next)=> {
     console.log('Time: ', Date.now())
@@ -30,19 +30,19 @@ const userSchema = new mongoose.Schema({
   })
   
   passport.use(new LocalStrategy({
-    usernameField: 'email',
-  }, async (email, password, done) => {
+    usernameField: 'username',
+  }, async (username, password, done) => {
     try {
-      const user = await User.findOne({ email });
+      const user = await User.findOne({ username });
   
       if (!user) {
-        return done(null, false, { message: 'Incorrect email or password.' });
+        return done(null, false, { message: 'Incorrect username or password.' });
       }
   
       const isMatch = await bcrypt.compare(password, user.password);
   
       if (!isMatch) {
-        return done(null, false, { message: 'Incorrect email or password.' });
+        return done(null, false, { message: 'Incorrect username or password.' });
       }
   
       done(null, user);

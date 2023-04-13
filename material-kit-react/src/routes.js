@@ -1,6 +1,8 @@
 import { Navigate, useRoutes } from 'react-router-dom';
+import { element } from 'prop-types';
 // layouts
-import DashboardLayout from './layouts/dashboard';
+import DashboardLayout from './layouts/dashboard/crcDashboard';
+import UserDashboardLayout from './layouts/dashboard/userDashboard';
 import SimpleLayout from './layouts/simple';
 //
 import BlogPage from './pages/BlogPage';
@@ -14,11 +16,24 @@ import AddStudent from './pages/AddStudent';
 import Companies from './pages/Companies';
 import Jobs from './pages/jobs'; 
 import UserJobs from './pages/userpage/jobs'; 
+import CrcLogin from './pages/crcLoginPage';
+import UserDashboard from './pages/userpage/userDashboard';
+
 
 // ----------------------------------------------------------------------
 
 export default function Router() {
   const routes = useRoutes([
+
+    {
+      path: '/login',
+      element: <LoginPage />,
+      children: [
+        { element: <Navigate to="/dashboard/app" />, index: true },
+        { path: '404', element: <Page404 /> },
+        { path: '*', element: <Navigate to="/404" /> },
+      ]
+    },
     {
       path: '/dashboard',
       element: <DashboardLayout />,
@@ -36,8 +51,21 @@ export default function Router() {
       ],
     },
     {
-      path: 'login',
-      element: <LoginPage />,
+      path: '/userDashboard',
+      element: <UserDashboardLayout/>,
+      children: [
+        { element: <Navigate to="/userDashboard/app" />, index: true },
+        { path: 'app', element: <UserDashboard /> },
+        { path: 'user', element: <UserPage /> },
+        { path: 'products', element: <ProductsPage /> },
+        { path: 'blog', element: <BlogPage /> },
+        {path: 'jobs', element: <Jobs/> },
+        {path: 'userpage/jobs', element: <UserJobs/>}
+      ]
+    },
+    {
+      path: '/crclogin',
+      element: <CrcLogin />
     },
     {
       element: <SimpleLayout />,

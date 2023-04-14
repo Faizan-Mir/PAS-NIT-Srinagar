@@ -7,11 +7,11 @@ import { LoadingButton } from '@mui/lab';
 // components
 import Iconify from '../../../components/iconify';
 
-import data from '../../../schemas/login.json';
+import data from '../../../schemas/crcLogin.json';
 
 // ----------------------------------------------------------------------
 
-export default function LoginForm() {
+export default function CRCLoginForm() {
   const navigate = useNavigate();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -29,7 +29,7 @@ export default function LoginForm() {
     const handleSubmit= async(event)=>{
         event.preventDefault(); 
         try{
-            const response = await axios.post('http://localhost:3001/crclogin/add', formData);
+            const response = await axios.post('http://localhost:3001/login/login', formData);
             
             navigate('/dashboard', { replace: true });
 

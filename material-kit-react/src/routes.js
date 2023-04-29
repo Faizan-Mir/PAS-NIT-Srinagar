@@ -5,11 +5,9 @@ import DashboardLayout from './layouts/dashboard/crcDashboard';
 import UserDashboardLayout from './layouts/dashboard/userDashboard';
 import SimpleLayout from './layouts/simple';
 //
-import BlogPage from './pages/BlogPage';
 import UserPage from './pages/UserPage';
 import LoginPage from './pages/LoginPage';
 import Page404 from './pages/Page404';
-import ProductsPage from './pages/ProductsPage';
 import DashboardAppPage from './pages/DashboardAppPage';
 import AllStudentsPage from './pages/AllStudentsPage'; 
 import AddStudent from './pages/AddStudent';
@@ -41,8 +39,6 @@ export default function Router() {
         { element: <Navigate to="/dashboard/app" />, index: true },
         { path: 'app', element: <DashboardAppPage /> },
         { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
         { path: 'all-students', element: <AllStudentsPage /> },
         { path: 'add-student', element: <AddStudent/> }, 
         {path: 'companies', element: <Companies/>},
@@ -57,8 +53,6 @@ export default function Router() {
         { element: <Navigate to="/userDashboard/app" />, index: true },
         { path: 'app', element: <UserDashboard /> },
         { path: 'user', element: <UserPage /> },
-        { path: 'products', element: <ProductsPage /> },
-        { path: 'blog', element: <BlogPage /> },
         {path: 'jobs', element: <Jobs/> },
         {path: 'userpage/jobs', element: <UserJobs/>}
       ]
